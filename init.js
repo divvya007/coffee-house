@@ -14,7 +14,11 @@ class CoffeeMaker {
   }
   refillMilk(milkTank) {
     if (milkTank === 250) {
-      alert("refill your milk container");
+      mug.style.display = "none";
+      let machine = document.getElementById("machine");
+      let refillImg = document.createElement("img");
+      refillImg.src = "./refill.gif";
+      machine.append(refillImg);
     }
   }
   refillWater(waterTank) {
@@ -70,7 +74,7 @@ let dispenseBtn = document
 
 let remainingMilk = milkContainer.milkQuantity;
 let remainingPods = podBox.numberOfPods;
-
+let mug = document.getElementById("mugContainer");
 function handleOnDispenseCoffeeBtnClick() {
   if (coffeeMc.refillMilk(remainingMilk)) {
   } else {
@@ -80,7 +84,11 @@ function handleOnDispenseCoffeeBtnClick() {
     console.log(remainingMilk);
     coffeeMc.milkTank = remainingMilk;
     coffeeMc.coffeePodBox = remainingPods;
-
+    mug.innerHTML = "here is your capuccino";
+    let coffeeImg = document.createElement("img");
+    coffeeImg.src = "./coffee-capu.jpg";
+    coffeeImg.classList = "coffeeImg";
+    mug.append(coffeeImg);
     console.log(coffeeMc);
   }
 }
@@ -100,12 +108,11 @@ function handleOnBlackCoffeeBtn() {
     coffeeMc.waterTank = remainingWater;
     remainingPods = remainingPods - 1;
     coffeeMc.coffeePodBox = remainingPods;
-    let mug = document.getElementById("mugContainer");
-    let coffeeImg = document.createElement("img");
-    coffeeImg.src = "./hotCoffee.gif";
-    coffeeImg.classList = "coffeeImg";
-    mug.append(coffeeImg);
-    console.log(coffeeMc);
+    let espressoImg = document.createElement("img");
+    espressoImg.src = "./espresso.jpg";
+    espressoImg.classList = "coffeeImg";
+    mug.append(espressoImg);
+    mug.innerHTML = "enjoy your espresso";
   }
   console.log(coffeeMc.dispense("water"));
 }
