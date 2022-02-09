@@ -58,5 +58,5 @@ let dispenseBtn = document
   .addEventListener("click", handleOnDispenseCoffeeBtnClick);
 
 function handleOnDispenseCoffeeBtnClick() {
-  console.log(coffeeMc.dispense("water"));
+  console.log(coffeeMc.dispense("milk"));
 }
