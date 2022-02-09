@@ -79,7 +79,7 @@ function handleOnDispenseCoffeeBtnClick() {
     remainingPods = remainingPods - 1;
     console.log(remainingMilk);
     coffeeMc.milkTank = remainingMilk;
-    coffeeMc.CoffeePodBox = remainingPods;
+    coffeeMc.coffeePodBox = remainingPods;
     console.log(coffeeMc);
   }
 }
@@ -98,7 +98,7 @@ function handleOnBlackCoffeeBtn() {
     console.log(remainingWater);
     coffeeMc.waterTank = remainingWater;
     remainingPods = remainingPods - 1;
-    coffeeMc.CoffeePodBox = remainingPods;
+    coffeeMc.coffeePodBox = remainingPods;
     console.log(coffeeMc);
   }
   console.log(coffeeMc.dispense("water"));

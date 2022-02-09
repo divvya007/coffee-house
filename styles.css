@@ -4,3 +4,7 @@
   flex: 1;
   gap: 30px;
 }
+
+.dispenseBtnContainer {
+  margin-top: 100px;
+}
