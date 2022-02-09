@@ -12,13 +12,13 @@ class CoffeeMaker {
       return "here is your black coffee";
     }
   }
-  refillMilk() {
-    if (this.milkTank === 250) {
+  refillMilk(milkTank) {
+    if (milkTank === 250) {
       alert("refill your milk container");
     }
   }
-  refillWater() {
-    if (this.waterTank === 250) {
+  refillWater(waterTank) {
+    if (waterTank === 250) {
       alert("refill your water container");
     }
   }
@@ -69,15 +69,17 @@ let dispenseBtn = document
   .addEventListener("click", handleOnDispenseCoffeeBtnClick);
 
 let remainingMilk = milkContainer.milkQuantity;
+let remainingPods = podBox.numberOfPods;
 
 function handleOnDispenseCoffeeBtnClick() {
-  if (coffeeMc.milkTank === 250) {
-    alert("refill milk container");
+  if (coffeeMc.refillMilk(remainingMilk)) {
   } else {
     console.log(coffeeMc.dispense("milk"));
     remainingMilk = remainingMilk - 250;
+    remainingPods = remainingPods - 1;
     console.log(remainingMilk);
     coffeeMc.milkTank = remainingMilk;
+    coffeeMc.CoffeePodBox = remainingPods;
     console.log(coffeeMc);
   }
 }
@@ -86,6 +88,18 @@ let blackCoffee = document
   .getElementById("blackCoffee")
   .addEventListener("click", handleOnBlackCoffeeBtn);
 
+let remainingWater = coffeeMc.waterTank;
+console.log("remainingWater:", remainingWater);
 function handleOnBlackCoffeeBtn() {
+  if (coffeeMc.refillWater(remainingWater)) {
+  } else {
+    console.log(coffeeMc.dispense("water"));
+    remainingWater = remainingWater - 250;
+    console.log(remainingWater);
+    coffeeMc.waterTank = remainingWater;
+    remainingPods = remainingPods - 1;
+    coffeeMc.CoffeePodBox = remainingPods;
+    console.log(coffeeMc);
+  }
   console.log(coffeeMc.dispense("water"));
 }
