@@ -1,7 +1,8 @@
 body {
-  align-content: center;
+  margin: 0%;
 }
 #btnContainer {
+  margin-top: 5px;
   display: flex;
   flex-direction: row;
   flex: 1;
@@ -12,15 +13,21 @@ body {
 /* .dispenseBtnContainer {
   /* margin-top: 100px; */
 /* } */
-.main-header {
-  width: 22.6%;
+.heading-Container {
+  background-color: rgb(238, 238, 56);
+  width: 100%;
   margin: auto;
   padding: 10px;
 }
 
 .heading1 {
-  margin: 0;
+  margin: 0px;
 }
 .heading2 {
-  margin: 0;
+  margin: 0px;
+}
+
+.coffeeImg {
+  height: 300px;
+  width: 300px;
 }

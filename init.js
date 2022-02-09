@@ -80,6 +80,7 @@ function handleOnDispenseCoffeeBtnClick() {
     console.log(remainingMilk);
     coffeeMc.milkTank = remainingMilk;
     coffeeMc.coffeePodBox = remainingPods;
+
     console.log(coffeeMc);
   }
 }
@@ -99,6 +100,11 @@ function handleOnBlackCoffeeBtn() {
     coffeeMc.waterTank = remainingWater;
     remainingPods = remainingPods - 1;
     coffeeMc.coffeePodBox = remainingPods;
+    let mug = document.getElementById("mugContainer");
+    let coffeeImg = document.createElement("img");
+    coffeeImg.src = "./hotCoffee.gif";
+    coffeeImg.classList = "coffeeImg";
+    mug.append(coffeeImg);
     console.log(coffeeMc);
   }
   console.log(coffeeMc.dispense("water"));
