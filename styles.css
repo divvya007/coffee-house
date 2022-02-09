@@ -1,0 +1,6 @@
+#btnContainer {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  gap: 30px;
+}
