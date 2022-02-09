@@ -13,10 +13,14 @@ class CoffeeMaker {
     }
   }
   refillMilk() {
-    return;
+    if (this.milkTank === 250) {
+      alert("refill your milk container");
+    }
   }
   refillWater() {
-    return;
+    if (this.waterTank === 250) {
+      alert("refill your water container");
+    }
   }
   refillCoffeePods() {
     return;
@@ -33,7 +37,7 @@ class MilkTank {
 }
 
 class WaterTank {
-  constructor(WaterQuantity) {
+  constructor(waterQuantity) {
     this.WaterQuantity = waterQuantity;
   }
   refill() {
@@ -49,14 +53,39 @@ class CoffeePodBox {
     return;
   }
 }
-
-let coffeeMc = new CoffeeMaker("1litre", "1litre", 200);
+let coffeeMc = new CoffeeMaker(1000, 1000, 200);
 console.log(coffeeMc);
+
+let milkContainer = new MilkTank(1000);
+console.log(milkContainer);
+
+let waterContainer = new WaterTank(1000);
+console.log(waterContainer);
+let podBox = new CoffeePodBox(200);
+console.log(podBox);
 
 let dispenseBtn = document
   .getElementById("dispenseBtn")
   .addEventListener("click", handleOnDispenseCoffeeBtnClick);
 
+let remainingMilk = milkContainer.milkQuantity;
+
 function handleOnDispenseCoffeeBtnClick() {
-  console.log(coffeeMc.dispense("milk"));
+  if (coffeeMc.milkTank === 250) {
+    alert("refill milk container");
+  } else {
+    console.log(coffeeMc.dispense("milk"));
+    remainingMilk = remainingMilk - 250;
+    console.log(remainingMilk);
+    coffeeMc.milkTank = remainingMilk;
+    console.log(coffeeMc);
+  }
+}
+
+let blackCoffee = document
+  .getElementById("blackCoffee")
+  .addEventListener("click", handleOnBlackCoffeeBtn);
+
+function handleOnBlackCoffeeBtn() {
+  console.log(coffeeMc.dispense("water"));
 }
