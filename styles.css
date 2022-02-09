@@ -1,10 +1,26 @@
+body {
+  align-content: center;
+}
 #btnContainer {
   display: flex;
   flex-direction: row;
   flex: 1;
   gap: 30px;
+  justify-content: center;
 }
 
-.dispenseBtnContainer {
-  margin-top: 100px;
+/* .dispenseBtnContainer {
+  /* margin-top: 100px; */
+/* } */
+.main-header {
+  width: 22.6%;
+  margin: auto;
+  padding: 10px;
+}
+
+.heading1 {
+  margin: 0;
+}
+.heading2 {
+  margin: 0;
 }
