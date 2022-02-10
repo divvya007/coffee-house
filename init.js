@@ -5,20 +5,29 @@ class CoffeeMaker {
     this.coffeePodBox = coffeePodBox;
   }
   dispense(coffeeType) {
-    if (coffeeType === "milk") {
-      return "here is your Coffee";
-    }
+    // if (coffeeType === "milk") {
+    //   this.milkTank.getMilk(250);
+    //   mug.innerHTML = "here is your Coffee";
+    //   contentLeft.innerText = `${this.milkTank.milkQuantity} ml of milk left`;
+    // }
+
     if (coffeeType === "water") {
-      return "here is your black coffee";
+      this.waterTank.getWater(250);
+      mug.innerHTML = "enjoy your coffee";
+      contentLeft.innerText = `${this.waterTank.waterQuantity} ml of water left`;
     }
   }
   refillMilk(milkTank) {
+    // remainingPods = remainingPods - 1;
     if (milkTank === 250) {
-      mug.style.display = "none";
-      let machine = document.getElementById("machine");
-      let refillImg = document.createElement("img");
-      refillImg.src = "./refill.gif";
-      machine.append(refillImg);
+      alert("refill your milk container");
+      //   mug.style.display = "none";
+      //   let machine = document.getElementById("machine");
+      //   let refillImg = document.createElement("img");
+      //   refillImg.src = "./refill.gif";
+      //   machine.innerHTML = null;
+      //   machine.append(refillImg);
+    } else {
     }
   }
   refillWater(waterTank) {
@@ -35,6 +44,12 @@ class MilkTank {
   constructor(milkQuantity) {
     this.milkQuantity = milkQuantity;
   }
+
+  getMilk(quantity) {
+    this.milkQuantity = this.milkQuantity - quantity;
+    return quantity;
+  }
+
   refill() {
     return;
   }
@@ -42,10 +57,18 @@ class MilkTank {
 
 class WaterTank {
   constructor(waterQuantity) {
-    this.WaterQuantity = waterQuantity;
+    this.waterQuantity = waterQuantity;
   }
   refill() {
     return;
+  }
+  getWater(qty) {
+    if (this.waterQuantity <= 250) {
+      alert("refill your water");
+    } else {
+      this.waterQuantity = this.waterQuantity - qty;
+      return this.waterQuantity;
+    }
   }
 }
 
@@ -57,62 +80,31 @@ class CoffeePodBox {
     return;
   }
 }
-let coffeeMc = new CoffeeMaker(1000, 1000, 200);
-console.log(coffeeMc);
+// console.log(coffeeMc);
 
 let milkContainer = new MilkTank(1000);
-console.log(milkContainer);
 
 let waterContainer = new WaterTank(1000);
-console.log(waterContainer);
-let podBox = new CoffeePodBox(200);
-console.log(podBox);
+console.log(milkContainer);
 
+let podBox = new CoffeePodBox(200);
+
+let coffeeMc = new CoffeeMaker(milkContainer, waterContainer, podBox);
+
+let mug = document.getElementById("mugContainer");
+let contentLeft = document.getElementById("contentLeft");
 let dispenseBtn = document
   .getElementById("dispenseBtn")
   .addEventListener("click", handleOnDispenseCoffeeBtnClick);
-
-let remainingMilk = milkContainer.milkQuantity;
-let remainingPods = podBox.numberOfPods;
-let mug = document.getElementById("mugContainer");
+// debugger;
 function handleOnDispenseCoffeeBtnClick() {
-  if (coffeeMc.refillMilk(remainingMilk)) {
-  } else {
-    console.log(coffeeMc.dispense("milk"));
-    remainingMilk = remainingMilk - 250;
-    remainingPods = remainingPods - 1;
-    console.log(remainingMilk);
-    coffeeMc.milkTank = remainingMilk;
-    coffeeMc.coffeePodBox = remainingPods;
-    mug.innerHTML = "here is your capuccino";
-    let coffeeImg = document.createElement("img");
-    coffeeImg.src = "./coffee-capu.jpg";
-    coffeeImg.classList = "coffeeImg";
-    mug.append(coffeeImg);
-    console.log(coffeeMc);
-  }
+  coffeeMc.dispense("milk");
+  console.log(coffeeMc);
 }
 
 let blackCoffee = document
   .getElementById("blackCoffee")
   .addEventListener("click", handleOnBlackCoffeeBtn);
-
-let remainingWater = coffeeMc.waterTank;
-console.log("remainingWater:", remainingWater);
 function handleOnBlackCoffeeBtn() {
-  if (coffeeMc.refillWater(remainingWater)) {
-  } else {
-    console.log(coffeeMc.dispense("water"));
-    remainingWater = remainingWater - 250;
-    console.log(remainingWater);
-    coffeeMc.waterTank = remainingWater;
-    remainingPods = remainingPods - 1;
-    coffeeMc.coffeePodBox = remainingPods;
-    let espressoImg = document.createElement("img");
-    espressoImg.src = "./espresso.jpg";
-    espressoImg.classList = "coffeeImg";
-    mug.append(espressoImg);
-    mug.innerHTML = "enjoy your espresso";
-  }
-  console.log(coffeeMc.dispense("water"));
+  coffeeMc.dispense("water");
 }
